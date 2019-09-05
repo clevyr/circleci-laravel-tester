@@ -4,9 +4,16 @@ ARG COMPOSER_VERSION="1"
 ARG NODEJS_VERSION="10"
 
 RUN set -x \
-    && apk add --no-cache \
+    && apk add --virtual .build-deps \
+        postgresql-dev \
+        $PHPIZE_DEPS \
+    && apk add \
         bc \
         "composer=~$COMPOSER_VERSION" \
         "nodejs=~$NODEJS_VERSION" \
         git \
-    && composer global require hirak/prestissimo
+        postgresql-libs \
+    && docker-php-ext-install -j"$(nproc)" bcmath pgsql pdo_pgsql \
+    && composer global require hirak/prestissimo \
+    && apk del .build-deps \
+    && rm -rf /var/cache/apk/*
