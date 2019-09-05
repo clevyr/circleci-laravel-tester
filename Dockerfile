@@ -21,3 +21,4 @@ RUN set -x \
     && rm -rf /var/cache/apk/*
 
 ENTRYPOINT ["bash", "-c"]
+CMD ["bash"]
