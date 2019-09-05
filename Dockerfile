@@ -15,7 +15,7 @@ RUN set -x \
         git \
         openssh-client \
         postgresql-libs \
-    && docker-php-ext-install -j"$(nproc)" bcmath pgsql pdo_pgsql \
+    && docker-php-ext-install -j"$(nproc)" bcmath pgsql pdo_pgsql exif \
     && composer global require hirak/prestissimo \
     && apk del .build-deps \
     && rm -rf /var/cache/apk/*
