@@ -8,6 +8,7 @@ RUN set -x \
         postgresql-dev \
         $PHPIZE_DEPS \
     && apk add \
+        bash \
         bc \
         "composer=~$COMPOSER_VERSION" \
         "nodejs=~$NODEJS_VERSION" \
@@ -18,3 +19,5 @@ RUN set -x \
     && composer global require hirak/prestissimo \
     && apk del .build-deps \
     && rm -rf /var/cache/apk/*
+
+ENTRYPOINT ["bash", "-c"]
