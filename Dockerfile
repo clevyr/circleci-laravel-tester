@@ -12,6 +12,7 @@ RUN set -x \
         "composer=~$COMPOSER_VERSION" \
         "nodejs=~$NODEJS_VERSION" \
         git \
+        openssh-client \
         postgresql-libs \
     && docker-php-ext-install -j"$(nproc)" bcmath pgsql pdo_pgsql \
     && composer global require hirak/prestissimo \
