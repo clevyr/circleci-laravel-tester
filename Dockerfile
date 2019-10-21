@@ -12,6 +12,7 @@ RUN set -x \
         bc \
         "composer=~$COMPOSER_VERSION" \
         "nodejs=~$NODEJS_VERSION" \
+        npm \
         git \
         openssh-client \
         postgresql-libs \
